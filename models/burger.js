@@ -17,11 +17,7 @@ var burger = {
       cb(res);
     });
   },
-  delete: function ({ id }, callback) {
-    orm.delete('burgers', {id: id}, function(result) {
-      callback(result);
-    })
-  }
+  
 };
 // Export the database functions for the controller (catsController.js).
 module.exports = burger;

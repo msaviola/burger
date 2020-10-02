@@ -1,36 +1,17 @@
-<h1>Burgers!</h1>
+<h1>Eat-Da-Burger</h1>
 
 <h2>Burgers that are not devoured!</h2>
 
 
-
 <ul>
- 
+
   {{#each burgers}}
-  
- 
-  
+   {{#unless devoured}}
+      
+    
 
   <li>
-    {{burger_name}}
-
-    <button class="change-devour" data-id="{{id}}" data-newdevour="{{devoured}}">
-      {{#if devoured}}devoured!{{else}}not devoured!{{/if}}
-    </button>
-   
-
-  
-  </li>
-  
-
-  {{/each}}
-</ul>
-
-<h2>Burgers that are devoured!</h2>
-
-<ul>
-  {{#each burgers}}
-  <li>
+    {{id}}. 
     {{burger_name}}
 
     <button class="change-devour" data-id="{{id}}" data-newdevour="{{devoured}}">
@@ -38,16 +19,37 @@
     </button>
 
   </li>
+  {{/unless}}
+  {{/each}}
+  </ul>
 
+ <h2>Burgers that are devoured!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      {{!-- {{> cats/cat-block sleep=false}} --}}
+    <li>
+    {{id}}. 
+    {{burger_name}}
+
+    <button class="change-devour" data-id="{{id}}" data-newdevour="{{devoured}}">
+      {{#if devoured}}devoured!{{else}}not devoured!{{/if}}
+    </button>
+
+  </li>
+    
+    {{/if}}
   {{/each}}
 </ul>
+ 
+
 
 <h2>Add a Burger</h2>
 <form class="create-form">
 
   <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    <label for="burger_name">Burger Name:</label> <input type="text" id="burger_name" name="name">
   </div>
 
   <div class="form-group">
