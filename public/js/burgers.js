@@ -1,24 +1,28 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-  // $(".change-devour").on("click", function(event) {
-  //   var id = $(this).data("id");
-  //   var newDevour = $(this).data("newdevour");
+  $(".change-devour").on("click", function(event) {
+    
+    var id = $(this).data("id");
+    var newDevour = $(this).data("newdevour");
    
-  //   var newDevourState = {
-  //     devoured: newDevour
-  //   };
-  //   // Send the PUT request.
-  //   $.ajax("/api/burgers/" + id, {
-  //     type: "PUT",
-  //     data: newDevourState
-  //   }).then(
-  //     function() {
-  //       console.log("changed devour to", newDevour);
-  //       // Reload the page to get the updated list
-  //       location.reload();
-  //     }
-  //   );
-  // });
+    var newDevourState ={
+      devoured: newDevour
+    };
+
+    console.log("ready to PUT" + id + newDevourState);
+
+    // Send the PUT request.
+    $.ajax("/api/burgers/" + id, {
+      type: "PUT",
+      data: newDevourState
+    }).then(
+      function() {
+        console.log("changed devour to", newDevour);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
 
   $(".create-form").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
@@ -28,7 +32,7 @@ $(function() {
     event.preventDefault();
 
     var newBurger = {
-      name: $("#ca").val().trim(),
+      name: $("#burger_name").val().trim(),
       devoured: $("[name=devoured]:checked").val().trim(),
     };
 

@@ -1,48 +1,61 @@
 <h1>Eat-Da-Burger</h1>
 
-<h2>Burgers that are not devoured!</h2>
+<div class="container">
+  <div class="row">
+    <div id="NotDevoured" class="col" >
+      <h2>Burgers that are not devoured!</h2>
 
 
-<ul>
+      <ul>
 
-  {{#each burgers}}
-   {{#unless devoured}}
-      
-    
+        {{#each burgers}}
+        {{#unless devoured}}
 
-  <li>
-    {{id}}. 
-    {{burger_name}}
 
-    <button class="change-devour" data-id="{{id}}" data-newdevour="{{devoured}}">
-      {{#if devoured}}devoured!{{else}}not devoured!{{/if}}
-    </button>
 
-  </li>
-  {{/unless}}
-  {{/each}}
-  </ul>
+        <li>
+          {{id}}.
+          {{burger_name}}
 
- <h2>Burgers that are devoured!</h2>
+          <button class="change-devour" data-id="{{id}}" data-newdevour="{{devoured}}">
+            {{#if devoured}}devoured!{{else}}not devoured!{{/if}}
+          </button>
 
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{!-- {{> cats/cat-block sleep=false}} --}}
-    <li>
-    {{id}}. 
-    {{burger_name}}
+        </li>
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
 
-    <button class="change-devour" data-id="{{id}}" data-newdevour="{{devoured}}">
-      {{#if devoured}}devoured!{{else}}not devoured!{{/if}}
-    </button>
 
-  </li>
-    
-    {{/if}}
-  {{/each}}
-</ul>
- 
+    <div id="Eaten" class="col">
+      <h2>Burgers Eaten!</h2>
+
+      <ul>
+        {{#each burgers}}
+        {{#if devoured}}
+
+        <li class="Eaten">
+          {{id}}.
+          {{burger_name}}
+
+          <button class="change-devour" data-id="{{id}}" data-newdevour="{{devoured}}">
+            {{#if devoured}}devoured!{{else}}not devoured!{{/if}}
+          </button>
+
+        </li>
+
+        {{/if}}
+        {{/each}}
+      </ul>
+
+
+    </div>
+  </div>
+</div>
+
+
+
 
 
 <h2>Add a Burger</h2>
